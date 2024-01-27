@@ -1,0 +1,21 @@
+name: Testing post to hashnode
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+    steps:
+    - uses: actions/checkout@v4
+    - uses: skarthikeyan96/solid-octo-broccoli@0.0.1
+      with:
+        GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}} 
+        PERSONAL_ACCESS_TOKEN: ${{secrets.PERSONAL_ACCESS_TOKEN}}
+        PUBLICATION_ID: ${{secrets.PUBLICATION_ID}}
